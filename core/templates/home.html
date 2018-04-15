@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+	
+	<div class="container">
+	  <h2>Bordered Table</h2>
+	  <p>The .table-bordered class adds borders to a table:</p>            
+	  
+	  <table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col"># ID</th>
+	      <th scope="col">PRIMEIRO NOME</th>
+	      <th scope="col">ULTIMO NOME</th>
+	      <th scope="col">E-MAIL</th>
+	      <th scope="col">TELEFONE</th>
+	      <th scope="col">DATA CONTRATAÇÃO</th>
+	      <th scope="col">JOB ID</th>
+	      <th scope="col">SALARIO</th>
+	      <th scope="col">ID GERENTE</th>
+	      <th scope="col">ID DEPARTAMENTO</th>
+	    </tr>
+	  </thead>
+		
+	{% for f in emps %}
+	  	
+	  	<tbody>
+			<tr>
+		    	<th scope="row">{{ f.EMPLOYEE_ID }}</th>
+		    	<td>{{ f.FIRST_NAME }}</td>
+		    	<td>{{ f.LAST_NAME }}</td>
+		    	<td>{{ f.EMAIL }}</td>
+				<td>{{ f.PHONE_NUMBER }}</td>
+				<td>{{ f.HIRE_DATE }}</td>
+				<td>{{ f.JOB_ID }}</td>
+				<td>{{ f.SALARY }}</td>
+				<td>{{ f.MANAGER_ID }}</td>
+				<td>{{ f.DEPARTMENT_ID }}</td>		    	
+		    </tr>
+
+		</tbody>
+	  	
+	  	{% empty %}
+		<div class="pure-g-r content-ribbon">
+			<div class="pure-u-1">
+				<div class="l-box">
+			    	<p>Nenhum curso está disponível na plataforma</p>
+			    </div>
+			</div>
+		</div>
+		{% endfor %}
+
+	</table>
+
+	</div>
+		
+
+
+{% endblock %}
+
+
+
