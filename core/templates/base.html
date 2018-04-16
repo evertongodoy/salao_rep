@@ -44,13 +44,71 @@
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Acesso Restrito</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" data-toggle="modal" data-target="#myModal">Acesso Restrito</button>
+        <!--form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" data-toggle="modal" data-target="#myModal">Acesso Restrito</button>
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form-->
       </div>
     </nav>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Acesso Restrito</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            
+           
+             <form class="form-inline my-2 my-lg-0" method="post">
+              {% csrf_token %} <!-- Secao 3, aula 27-->
+              <fieldset>
+                  
+                  {% for field in formLogin %}
+                  <div>
+                    
+                      {{ field.label_tag }} <!-- reenderizando toda a tag do label -->
+                      {{ field }} <!-- reenderizando somente o campo-->
+                   
+                      {% if field.errors %}
+                      <ul class="errorList">
+                        {% for error in field.errors %}
+                          <li>{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                      {% endif %}
+                    
+                  </div>
+                  {% endfor %}
+
+                  <button type="submit">Enviar</button>
+
+              </fieldset>
+            </form>
+
+
+
+
+
+
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
 
     {% block conteudo %}{% endblock %}
@@ -58,6 +116,13 @@
         Salai XYZ - Uma simples plataforma para uso
     </div>
 </div>
+
+
+
+
+
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

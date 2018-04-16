@@ -121,3 +121,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # https://tableless.com.br/tudo-que-voce-queria-saber-sobre-git-e-github-mas-tinha-vergonha-de-perguntar/
+# https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Forms
